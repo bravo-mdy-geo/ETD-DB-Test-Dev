@@ -60,7 +60,14 @@ body {
     border: 2px solid #f0f0f0;
     background-color: #fffcff;
     box-shadow: inset 0px 0px 5px 0px rgba(100,100,100,0.2);}
+
+
+    table, th, td {
+    border: 1px solid black;
+    }
+
   </style>
+
   
   </head>
   <body>
@@ -75,14 +82,14 @@ body {
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
       <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="link.html">2008</a>
-      <a class="mdl-navigation__link" href="">2009</a>
-      <a class="mdl-navigation__link" href="">2010</a>
-      <a class="mdl-navigation__link" href="">2011</a>
-      <a class="mdl-navigation__link" href="">2012</a>
-      <a class="mdl-navigation__link" href="">2013</a>
-      <a class="mdl-navigation__link" href="">2015</a>
-      <a class="mdl-navigation__link" href="">2016</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2008.html">2008</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2009.html">2009</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2010.html">2010</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2011.html">2011</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2012.html">2012</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2013.html">2013</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2014.html">2015</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2015.html">2016</a>
       </nav>
     </div>
 
@@ -90,39 +97,28 @@ body {
       <div class="page-content">
         <!-- Your content goes here -->
         <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-    <div>
-      <h3>  ONTOLOGY-BASED INFORMA-TION RETRIVAL SYSTEM</h3>
-      <br><br>
+    <div id="div_title">
+      
     </div>
-    <div class="description">
-      Today, Information Technology (IT) is rapidly improving and then large-scale availiable data and information is demanded by information socieity. To grt relevant and related information, efficient Information Reteieval (IR) system which is needed provides advanced searching facilities. To organize large information  repositories efficiently, metadata can be used. Closely related to metadata is ontology.Ontology is a formal explicit description of concepts in a domain of discourse, properties of each concept descripting various feactures and attributes of the concept, and restrictions on slots. This thesis is intented to present the feactures and benefits of the IR system by applying ontology concepts and also point out how metadata is critical in supporting effictive discovery. This system is implemented by using Java, XML and Java APi for RDF clled Jena package.
+
+    <div class="description" id="div_abstract">
+      
     </div>
     <br>
-    <div class="description">
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <div class="description" id="div_table">
+    <table>
   <thead>
     <tr>
-      <th class="mdl-data-table__cell--non-numeric">Material</th>
-      <th>Quantity</th>
-      <th>Unit price</th>
+      <th>Name</th>
+      <th>Major</th>
+      <th>Degree</th>
+      <th>Supervisor</th>
+      <th>Thesis Title</th>
+      <th>Abstract</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-      <td>25</td>
-      <td>$2.90</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-      <td>50</td>
-      <td>$1.25</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-      <td>10</td>
-      <td>$2.35</td>
-    </tr>
+  <tbody id="div_table_tbody">
+   
   </tbody>
 </table>
     </div>

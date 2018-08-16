@@ -37,14 +37,14 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
       <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="link.html">2008</a>
-      <a class="mdl-navigation__link" href="">2009</a>
-      <a class="mdl-navigation__link" href="">2010</a>
-      <a class="mdl-navigation__link" href="">2011</a>
-      <a class="mdl-navigation__link" href="">2012</a>
-      <a class="mdl-navigation__link" href="">2013</a>
-      <a class="mdl-navigation__link" href="">2015</a>
-      <a class="mdl-navigation__link" href="">2016</a>
+     <a class="mdl-navigation__link" href="thesisInfo_2008.html" id="yr_2008">2008</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2009.html" id="yr_2009">2009</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2010.html">2010</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2011.html">2011</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2012.html">2012</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2013.html">2013</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2015.html">2015</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2016.html">2016</a>
       </nav>
     </div>
 
@@ -54,15 +54,31 @@
         <table>
           <thead>
             <tr>
-              <th class="mdl-data-table__cell--non-numeric">Thesis Title for 2008</th>
+              <th class="mdl-data-table__cell--non-numeric">Thesis Title for 2013</th>
            </tr>
           </thead>
           <tbody id="tb">
+
              </tbody>
         </table>
       </div>
     </main>
   </div>
-  <script defer src="js/app.js"></script>
+  <script type="text/javascript">   
+
+    $("#yr_2008").ready(function(){
+
+  var objRef = firebase.database().ref().child("2013");
+
+  objRef.on("child_added", snap => {
+
+    var title = snap.child("ThesisTitle").val();
+
+    $("#tb").append("<tr><td><a href='link.html'>"+ title + "</a></td></tr>");
+
+  }); 
+});
+
+</script>
   </body>
 </html>

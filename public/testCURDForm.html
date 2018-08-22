@@ -1,0 +1,115 @@
+   <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.3.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.3.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.3.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.3.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.3.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+  table, th, td {
+    border: 1px solid black;
+    }
+</style>
+  </head>
+  <body>
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">ETD</span>
+      </div>
+      <!-- Tabs -->
+     </header>
+    
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+    <div class="mdl-layout__drawer">
+      <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">2008</a>
+      <a class="mdl-navigation__link" href="">2009</a>
+      <a class="mdl-navigation__link" href="">2010</a>
+      <a class="mdl-navigation__link" href="">2011</a>
+      <a class="mdl-navigation__link" href="">2012</a>
+      <a class="mdl-navigation__link" href="">2013</a>
+      <a class="mdl-navigation__link" href="">2015</a>
+      <a class="mdl-navigation__link" href="">2016</a>
+      </nav>
+    </div>
+
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <!-- Your content goes here -->
+        <table>
+      <tr>
+        <td>Name</td>
+        <td> <input type ="text" placeholder="Enter author name" id="name"></td>
+      </tr>
+      <tr>
+        <td>Degree</td>
+        <td><input type="text" placeholder="Enter degree" id="degree"></td>
+      </tr>
+      <tr>
+        <td>Supervisor Name</td>
+        <td><input type="text" placeholder="Enter supervisor name" id="supervisor"></td>
+      </tr>
+      <tr>
+        <td>Title</td>
+        <td><input type="text" placeholder="Enter thesis title" id="title"></td>
+      </tr>
+      <tr>
+        <td>Major</td>
+        <td><input type="text" placeholder="Enter major" id="major"></td>
+      </tr>
+      <tr>
+        <td>Abstract</td>
+        <td><input type="text" placeholder="Enter abstraction" id="abstract"></td>
+      </tr>
+    </table>
+  
+      <table id="crud">
+
+      <tr>
+        <td><input type="button" value ="Create" onclick="create_user()"></td>
+        <td><input type="button" value="Update" onclick="update_user()"></td>
+        <td><input type="button" value="Delete" onclick="delete_user()"></td>
+      </tr>
+    </table>
+
+
+      </div>
+
+      <div class="description" id="div_table">
+      <table id="aa">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Major</th>
+              <th>Degree</th>
+              <th>Supervisor</th>
+              <th>Thesis Title</th>
+              <th>Abstract</th>
+           </tr>
+        </thead>
+        <tbody id="div_crud_table">
+        
+        </tbody>
+    </table>
+    </div>
+    <script src="js/crud.js"></script>
+    </main>
+  </div>
+  
+  </body>
+</html>

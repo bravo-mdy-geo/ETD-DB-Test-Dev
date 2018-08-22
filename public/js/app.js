@@ -10,6 +10,8 @@ $(document).ready(function(){
 		var thesistitle = snap.child("ThesisTitle").val();
 		var abstract = snap.child("Abstract").val();
 
+
+		
 		//alert(team);*/
 		//console.log(snap.child("ThesisTitle").val());
 
@@ -19,7 +21,12 @@ $(document).ready(function(){
 		//$("#div_abstract").append(abstract);
 
 		$("#div_table_tbody").append("<tr><td>" + name + "</td><td>" + major + "</td><td>" + degree + 
-			"</td><td>" + supervisor + "</td><td>" + thesistitle + "</td><td>" + abstract + "</td></tr>" );
+		"</td><td>" + supervisor + "</td><td>" + thesistitle + "</td><td>" + abstract + "</td></tr>" );  
+
+
+		$("#div_crud_table").append("<tr><td>" + name + "</td><td>" + major + "</td><td>" + degree + 
+		"</td><td>" + supervisor + "</td><td>" + thesistitle + "</td><td>" + abstract + "</td></tr>" ); 
+
 
 	});
 	//document.getElementById("thesis").setText(objRef.child("Team").value);

@@ -25,7 +25,7 @@
     }
 
     <style>
-.alink:link {
+a:link {
     color: green;
     background-color: transparent;
     text-decoration: none;
@@ -56,8 +56,8 @@ a:active {
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
       <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="thesisInfo_2008.html" id="yr_2008">2008</a>
-      <a class="mdl-navigation__link" href="thesisInfo_2009.html" id="yr_2009">2009</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2008.html">2008</a>
+      <a class="mdl-navigation__link" href="thesisInfo_2009.html">2009</a>
       <a class="mdl-navigation__link" href="thesisInfo_2010.html">2010</a>
       <a class="mdl-navigation__link" href="thesisInfo_2011.html">2011</a>
       <a class="mdl-navigation__link" href="thesisInfo_2012.html">2012</a>
@@ -70,7 +70,7 @@ a:active {
     <main class="mdl-layout__content">
       <div class="page-content">
         <!-- Your content goes here -->
-        <table>
+        <table id="tlinkA">
           <thead>
             <tr>
               <th class="mdl-data-table__cell--non-numeric">Thesis Title for 2008</th>
@@ -85,7 +85,7 @@ a:active {
   </div>
   <script type="text/javascript">   
 
-    $("#yr_2008").ready(function(){
+    $(document).ready(function(){
 
   var objRef = firebase.database().ref().child("2008");
 
@@ -93,11 +93,15 @@ a:active {
 
     var title = snap.child("ThesisTitle").val();
 
-    $("#tb").append("<tr><td><a href='link.html'>"+ title + "</a></td></tr>");
+    $("#tb").append("<tr><td><a href='#'>"+ title + "</a></td></tr>");
 
   }); 
+
+
+
 });
 
 </script>
+
   </body>
 </html>

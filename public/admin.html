@@ -51,7 +51,12 @@
     <main class="mdl-layout__content">
       <div class="page-content">
         <!-- Your content goes here -->
-        <table>
+        
+<table>
+    <tr>
+      <td>ID</td>
+      <td><input type= "text" placeholder="Enter Key for database eg:001" id="txt_id"></td>
+    </tr>
       <tr>
         <td>Name</td>
         <td> <input type ="text" placeholder="Enter author name" id="name"></td>
@@ -77,15 +82,15 @@
         <td><input type="text" placeholder="Enter abstraction" id="abstract"></td>
       </tr>
       <tr>
-        <td> <button id="btn_create">Create</button></td>
-       <td> <button id="btn_update">Update</button></td>
+        <td> <button id="btn_create" onclick="Create()">Create</button></td>
+       <td> <button id="btn_update" onclick="Update()">Update</button></td>
       </tr>
     </table>
   </div>
   <div>
     <table id="crud">
        
-        <tr><td><input type="text" id="title" placeholder="Enter id that u delete"></td></tr>
+        <tr><td><input type="text" id="txt_delete" placeholder="Enter id that u delete"></td></tr>
         <tr><td><input type="button" id='btn_delete' onclick="Delete()" value="Delete"></td></tr> 
       
     </table>
@@ -116,7 +121,7 @@
   	$(document).ready(function(){
 
       
-	var objRef = firebase.database().ref().child("ETDdatabase").child("2011");
+	var objRef = firebase.database().ref().child("2008");
 
 	objRef.on("child_added", snap => {
 		var name = snap.child("Name").val();
@@ -154,8 +159,8 @@
     //to make UI
      function Delete(){
 
-    var key = document.getElementById("title").value;
-    var todelete = firebase.database().ref().child('2011').child(key).remove();
+    var key = document.getElementById("txt_delete").value;
+    firebase.database().ref().child('2008').child(key).remove();
     //alert(todelete);
     //console.log("success");
     }
@@ -165,7 +170,7 @@
     //for create button
     function Create(){
     //  uid = $("#id").val();
-    var id = document.getElementById("id").value;
+    var id = document.getElementById("txt_id").value;
     var name = document.getElementById("name").value;
     var degree = document.getElementById("degree").value;
     var supervisor = document.getElementById("supervisor").value;
@@ -173,13 +178,13 @@
     var major = document.getElementById("major").value;
     var abstract = document.getElementById("abstract").value;
   
-    var uid = firebase.database().ref().child('2011').push().key;
+    var uid = firebase.database().ref().child('2008').push().key;
     //var user = firebase.auth().currentUser;
     alert(id);
 
     var data = {        
           
-          Abstract : abstract,
+          Absrtact : abstract,
           Degree : degree,
           Major : major,
           Name : name ,         
@@ -189,7 +194,7 @@
       } ;
       
       var updates = {}
-      var path= "2011/" + uid ;
+      var path= "2008/" + uid ;
       updates[path] = data; 
       firebase.database().ref().update(updates);
       console.log(path);
@@ -198,6 +203,48 @@
     }   
     
   </script>
+  <script>
+  function Update(){
+    var id = document.getElementById("txt_id").value;
+    var name = document.getElementById("name").value;
+    var degree = document.getElementById("degree").value;
+    var supervisor = document.getElementById("supervisor").value;
+    var title = document.getElementById("title").value;
+    var major = document.getElementById("major").value;
+    var abstract = document.getElementById("abstract").value;
+    /*
+     function update_user(){
+      var user_name = document.getElementById("user_name").value;
+      var user_id = document.getElementById("user_id").value;
+      var data = {
+        user_id : user_id,
+        user_name : user_name
+      }; 
+      var updates = {}
+      updates["users" + user_id] = data;
+      firebase.database().ref().update(updates);
+    }
+         */
+
+      var data = {        
+          
+          Absrtact : abstract,
+          Degree : degree,
+          Major : major,
+          Name : name ,         
+          SupervisorName : supervisor,
+          ThesisTitle : title
+
+      } ;
+      var updates = {}
+      updates["2008/" + id] = data; 
+      firebase.database().ref().update(updates);
+
+  }
+
+
+</script>
+
   
   </body>
 </html>

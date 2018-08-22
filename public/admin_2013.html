@@ -37,21 +37,26 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
       <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="crud_2008.html">2008</a>
-      <a class="mdl-navigation__link" href="crud_2009.html">2009</a>
-      <a class="mdl-navigation__link" href="crud_2010.html">2010</a>
-      <a class="mdl-navigation__link" href="crud_2011.html">2011</a>
-      <a class="mdl-navigation__link" href="crud_2012.html">2012</a>
-      <a class="mdl-navigation__link" href="crud_2013.html">2013</a>
-      <a class="mdl-navigation__link" href="crud_2015.html">2015</a>
-      <a class="mdl-navigation__link" href="crud_2016.html">2016</a>
+      <a class="mdl-navigation__link" href="admin_2008.html">2008</a>
+      <a class="mdl-navigation__link" href="admin_2009.html">2009</a>
+      <a class="mdl-navigation__link" href="admin_2010.html">2010</a>
+      <a class="mdl-navigation__link" href="admin_2011.html">2011</a>
+      <a class="mdl-navigation__link" href="admin_2012.html">2012</a>
+      <a class="mdl-navigation__link" href="admin_2013.html">2013</a>
+      <a class="mdl-navigation__link" href="admin_2015.html">2015</a>
+      <a class="mdl-navigation__link" href="admin_2016.html">2016</a>
       </nav>
     </div>
 
     <main class="mdl-layout__content">
       <div class="page-content">
         <!-- Your content goes here -->
-        <table>
+        
+<table>
+    <tr>
+      <td>ID</td>
+      <td><input type= "text" placeholder="Enter Key for database eg:001" id="txt_id"></td>
+    </tr>
       <tr>
         <td>Name</td>
         <td> <input type ="text" placeholder="Enter author name" id="name"></td>
@@ -76,19 +81,20 @@
         <td>Abstract</td>
         <td><input type="text" placeholder="Enter abstraction" id="abstract"></td>
       </tr>
-    </table>
-  
-      <table id="crud">
-
       <tr>
-        <td><input type="button" value ="Create" onclick="create_user()"></td>
-        <td><input type="button" value="Update" onclick="update_user()"></td>
-        <td><input type="button" value="Delete" onclick="delete_user()"></td>
+        <td> <button id="btn_create" onclick="Create()">Create</button></td>
+       <td> <button id="btn_update" onclick="Update()">Update</button></td>
       </tr>
     </table>
-
-
-      </div>
+  </div>
+  <div>
+    <table id="crud">
+       
+        <tr><td><input type="text" id="txt_delete" placeholder="Enter id that u delete"></td></tr>
+        <tr><td><input type="button" id='btn_delete' onclick="Delete()" value="Delete"></td></tr> 
+      
+    </table>
+  </div>
 
       <div class="description" id="div_table">
       <table id="aa">
@@ -110,30 +116,135 @@
     </main>
   </div>
   <script>
-  	$(document).ready(function(){
 
-	var objRef = firebase.database().ref().child("ETDdatabase").child("2013");
+    //for database 
+    $(document).ready(function(){
 
-	objRef.on("child_added", snap => {
-		var name = snap.child("Name").val();
-		var major = snap.child("Major").val();
-		var degree = snap.child("Degree").val();
-		var supervisor = snap.child("SupervisorName").val();
-		var thesistitle = snap.child("ThesisTitle").val();
-		var abstract = snap.child("Abstract").val();
+      
+  var objRef = firebase.database().ref().child("2013");
 
-
-		
-
-		$("#div_crud_table").append("<tr><td>" + name + "</td><td>" + major + "</td><td>" + degree + 
-		"</td><td>" + supervisor + "</td><td>" + thesistitle + "</td><td>" + abstract + "</td></tr>" ); 
+  objRef.on("child_added", snap => {
+    var name = snap.child("Name").val();
+    var major = snap.child("Major").val();
+    var degree = snap.child("Degree").val();
+    var supervisor = snap.child("SupervisorName").val();
+    var thesistitle = snap.child("ThesisTitle").val();
+    var abstract = snap.child("Absrtact").val();
 
 
-	});
-	
+    
+
+    $("#div_crud_table").append("<tr><td>" + name + "</td><td>" + major + "</td><td>" + degree + 
+    "</td><td>" + supervisor + "</td><td>" + thesistitle + "</td><td>" + abstract + "</td></tr>" ); 
+
+
+  });
+
+   
+
+    /*    $('#btn_create').click(function(){
+  
+      window.location.href = "https://console.firebase.google.com/u/0/project/etd-db-test-dev2/database/etd-db-test-dev2/data";
+    
+      
+    });*/
+       
+      
 });
 
   </script>
+  <script>
+
+    //action of delete 
+    //to make UI
+     function Delete(){
+
+    var key = document.getElementById("txt_delete").value;
+    firebase.database().ref().child('2013').child(key).remove();
+    //alert(todelete);
+    //console.log("success");
+    }
+
+  </script>
+  <script>
+    //for create button
+    function Create(){
+    //  uid = $("#id").val();
+    var id = document.getElementById("txt_id").value;
+    var name = document.getElementById("name").value;
+    var degree = document.getElementById("degree").value;
+    var supervisor = document.getElementById("supervisor").value;
+    var title = document.getElementById("title").value;
+    var major = document.getElementById("major").value;
+    var abstract = document.getElementById("abstract").value;
+  
+    var uid = firebase.database().ref().child('2013').push().key;
+    //var user = firebase.auth().currentUser;
+    alert(id);
+
+    var data = {        
+          
+          Abstract : abstract,
+          Degree : degree,
+          Major : major,
+          Name : name ,         
+          SupervisorName : supervisor,
+          ThesisTitle : title
+
+      } ;
+      
+      var updates = {}
+      var path= "2013/" + uid ;
+      updates[path] = data; 
+      firebase.database().ref().update(updates);
+      console.log(path);
+
+
+    }   
+    
+  </script>
+  <script>
+  function Update(){
+    var id = document.getElementById("txt_id").value;
+    var name = document.getElementById("name").value;
+    var degree = document.getElementById("degree").value;
+    var supervisor = document.getElementById("supervisor").value;
+    var title = document.getElementById("title").value;
+    var major = document.getElementById("major").value;
+    var abstract = document.getElementById("abstract").value;
+    /*
+     function update_user(){
+      var user_name = document.getElementById("user_name").value;
+      var user_id = document.getElementById("user_id").value;
+      var data = {
+        user_id : user_id,
+        user_name : user_name
+      }; 
+      var updates = {}
+      updates["users" + user_id] = data;
+      firebase.database().ref().update(updates);
+    }
+         */
+
+      var data = {        
+          
+          Abstract : abstract,
+          Degree : degree,
+          Major : major,
+          Name : name ,         
+          SupervisorName : supervisor,
+          ThesisTitle : title
+
+      } ;
+      var updates = {}
+      updates["2013/" + id] = data; 
+      firebase.database().ref().update(updates);
+
+  }
+
+
+</script>
+
   
   </body>
 </html>

@@ -144,7 +144,7 @@
         <td><input type="text" placeholder="Enter abstraction" id="abstract"></td>
       </tr>
       <tr>
-      	<td><input type="button" value="Create" onclick="fnCreate()"></td>
+      	<td><input type="button" value="Create" onclick="Create()"></td>
       </tr>
     </table>
   
@@ -176,19 +176,21 @@ if (user) {
   });
 }
     } */
+
     function Create(){
-    //	uid = $("#id").val();
-    var id = document.getElementById("id").value;
-		var name = document.getElementById("name").value;
+  
+    var id = document.getElementById("txt_id").value;
+		var name = $('#name').val();
 		var degree = document.getElementById("degree").value;
 		var supervisor = document.getElementById("supervisor").value;
 		var title = document.getElementById("title").value;
 		var major = document.getElementById("major").value;
 		var abstract = document.getElementById("abstract").value;
 	
-		var uid = firebase.database().ref().child('2010').push().key;
-		//var user = firebase.auth().currentUser;
-    alert(id);
+		var uid= firebase.database().ref().child('2010').push().key;
+  
+    alert(name);
+  // console.log(name , degree , supervisor, title, major, abstract);
 
 		var data = {   			
     			
@@ -202,22 +204,14 @@ if (user) {
     	} ;
     	
     	var updates = {}
-      var path= "2010/" + uid ;
+      var path= "2010/" + uid ;     
     	updates[path] = data; 
-    	firebase.database().ref().update(updates);
-      console.log(path);
+      firebase.database().ref().update(updates);
 
+     
 
-    }
-
-    
-        
-
-</script>
-<script src="js/deleteTestapp.js">
-</script>
-<script src="js/deleteTestlib.js"></script>
-  	
+    } 	
+  </script>
 		
 
  </body>

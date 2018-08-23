@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="mdl-js">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Electronic Thesis and Disseratation</title>
+
+		 <script defer src="/__/firebase/5.3.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+	    <script defer src="/__/firebase/5.3.0/firebase-auth.js"></script>
+	    <script defer src="/__/firebase/5.3.0/firebase-database.js"></script>
+	    <script defer src="/__/firebase/5.3.0/firebase-messaging.js"></script>
+	    <script defer src="/__/firebase/5.3.0/firebase-storage.js"></script>
+	    <!-- initialize the SDK after all desired features are loaded -->
+	    <script defer src="/__/firebase/init.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<link rel="stylesheet" href="css/material.css">
+		<script src="js/material.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
+		<style>
+			.mdl-layout__header-row {
+				background-color: #081159;
+			}
+			table, th, td {
+				border: 1px solid black;
+			}
+			#db {
+				height: 9cm;
+			}
+			#btn{
+				padding-left: 70px;
+				padding-right: 70px;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				font-size: 20px;
+				border-style: double;
+				background-color: #fff;
+				color: #000000;
+			}
+			#btn:hover {
+				box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+				border-style: solid;
+				border-color: #d9dff4;
+				border-width: 5px;
+				background-color: #4d5bd1;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<nav class="mdl-navigation mdl-layout">
+						<a class="mdl-navigation__link" href="geo_etd_admin.html"><span style="font-size:15px; padding-right: 15px">Admin</span></a>
+						<a class="mdl-navigation__link" href="geo_etd_admin.html"><span style="font-size:15px; padding-right: 15px">Logout</span></a>
+					</nav>
+				</div>
+			</header>
+			<main class="mdl-layout__content">
+				<div class="page-content">
+					<div class="mdl-grid demo-content mdl-cell mdl-cell--12-col">
+						<div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2008.html" id="btn">2008</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2009.html" id="btn">2009</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2010.html" id="btn">2010</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2011.html" id="btn">2011</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2012.html" id="btn">2012</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2013.html" id="btn">2013</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2014.html" id="btn">2014</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2015.html" id="btn">2015</a>
+							<a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="geo_etd_db_2016.html" id="btn">2016</a>
+						</div>
+						<div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" style="padding-left: 20px;">	
+							<table>
+								<tbody>
+									<tr>
+										<td>ID</td>
+										<td><input type="text" placeholder="Enter Key for database eg:001" id="txt_id"></td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td> <input type="text" placeholder="Enter author name" id="name"></td>
+									</tr>
+									<tr>
+										<td>Degree</td>
+										<td><input type="text" placeholder="Enter degree" id="degree"></td>
+									</tr>
+									<tr>
+										<td>Supervisor Name</td>
+										<td><input type="text" placeholder="Enter supervisor name" id="supervisor"></td>
+									</tr>
+									<tr>
+										<td>Title</td>
+										<td><input type="text" placeholder="Enter thesis title" id="title"></td>
+									</tr>
+									<tr>
+										<td>Major</td>
+										<td><input type="text" placeholder="Enter major" id="major"></td>
+									</tr>
+									<tr>
+										<td>Abstract</td>
+										<td><input type="text" placeholder="Enter abstraction" id="abstract"></td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<table id="crud" style="margin-top: 20px">
+								<tr><td><button id="btn_create" onclick="Create()">Create</button></td>
+								<td><button id="btn_update" onclick="Update()">Update</button></td></tr>
+							</table>								
+											
+										
+								
+							<table id="crud" style="margin-top: 20px">       
+								<tbody>
+									<tr>
+										<td><input type="text" id="txt_delete" placeholder="Enter id that u delete"></td>
+										<td><input type="button" id="btn_delete" onclick="Delete()" value="Delete"></td>
+									</tr>									
+								</tbody>
+							</table>
+						</div>
+						<div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone" id="div_table">
+							<table id="aa">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Major</th>
+										<th>Degree</th>
+										<th>Supervisor</th>
+										<th>Thesis Title</th>
+										<th>Abstract</th>
+									</tr>
+								</thead>
+								<tbody id="div_crud_table">								
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<script>
+			//for table 
+			$(document).ready(function(){
+
+      
+			  var objRef = firebase.database().ref().child("2009");
+
+			  objRef.on("child_added", snap => {
+			    var name = snap.child("Name").val();
+			    var major = snap.child("Major").val();
+			    var degree = snap.child("Degree").val();
+			    var supervisor = snap.child("SupervisorName").val();
+			    var thesistitle = snap.child("ThesisTitle").val();
+			    var abstract = snap.child("Abstract").val();
+
+
+			    
+
+			    $("#div_crud_table").append("<tr><td>" + name + "</td><td>" + major + "</td><td>" + degree + 
+			    "</td><td>" + supervisor + "</td><td>" + thesistitle + "</td><td>" + abstract + "</td></tr>" ); 
+
+ 				 });
+			});
+
+			//for delete button 
+			 function Delete(){
+
+			    var key = document.getElementById("txt_delete").value;
+			    firebase.database().ref().child('2009').child(key).remove();
+			    
+    			}
+
+    		//for create button 
+    		 function Create(){
+    
+			    var id = document.getElementById("txt_id").value;
+			    var name = document.getElementById("name").value;
+			    var degree = document.getElementById("degree").value;
+			    var supervisor = document.getElementById("supervisor").value;
+			    var title = document.getElementById("title").value;
+			    var major = document.getElementById("major").value;
+			    var abstract = document.getElementById("abstract").value;
+			  
+			    var uid = firebase.database().ref().child('2009').push().key;
+			    
+			    
+
+			    var data = {        
+			          
+			          Abstract : abstract,
+			          Degree : degree,
+			          Major : major,
+			          Name : name ,         
+			          SupervisorName : supervisor,
+			          ThesisTitle : title
+
+			      } ;
+			      
+			      var updates = {}
+			      var path= "2009/" + uid ;
+			      updates[path] = data; 
+			      firebase.database().ref().update(updates);
+			     
+
+
+			    }   
+
+			    //for update button
+			    function Update(){
+				    var id = document.getElementById("txt_id").value;
+				    var name = document.getElementById("name").value;
+				    var degree = document.getElementById("degree").value;
+				    var supervisor = document.getElementById("supervisor").value;
+				    var title = document.getElementById("title").value;
+				    var major = document.getElementById("major").value;
+				    var abstract = document.getElementById("abstract").value;
+				    
+
+				      var data = {        
+				          
+				          Abstract : abstract,
+				          Degree : degree,
+				          Major : major,
+				          Name : name ,         
+				          SupervisorName : supervisor,
+				          ThesisTitle : title
+
+				      } ;
+				      var updates = {}
+				      updates["2009/" + id] = data; 
+				      firebase.database().ref().update(updates);
+
+				  }
+
+
+
+		</script>
+
+	</body>
+</html>

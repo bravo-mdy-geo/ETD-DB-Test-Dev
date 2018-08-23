@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Electronic Thesis and Dissertation</title>
+    <link rel="shortcut icon" href="image/icon.png">
+	
+    <script  src="/__/firebase/5.3.0/firebase-app.js"></script>    
+    <script  src="/__/firebase/5.3.0/firebase-auth.js"></script>
+    <script  src="/__/firebase/5.3.0/firebase-database.js"></script>
+    <script  src="/__/firebase/5.3.0/firebase-messaging.js"></script>
+    <script  src="/__/firebase/5.3.0/firebase-storage.js"></script>
+    
+    <script  src="/__/firebase/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+	
+	<link rel="stylesheet" href="css/material.css">
+	<script src="js/material.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<style type="text/css">
+		body {
+			background: #fff;
+			position: relative;
+		}
+		.mdl-mega-footer {
+			margin-top: 50px;
+		}
+		.mdl-layout__header .mdl-layout__drawer-button {
+			position: absolute;
+			background-color: #081159;
+		}
+		.mdl-layout__drawer {
+			background-color: #fff;
+		}
+		.material-icons {
+			color: #fff;
+		}
+		.mdl-layout__header-row {
+			background-color: #081159;
+		}
+		#nav {
+			color: #040f68
+		}
+		h3 {
+			color: #040f68;
+			margin-top: 10px;
+			padding-left: 8%;
+			padding-bottom: 10px;
+			font-family: Verdana;
+		}
+		h5 {
+			color: #0c1875;
+			padding-left: 12%;
+			font-family: Verdana;
+			font-size: 18px;
+		}
+
+	</style>
+  </head>
+  <body>
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header mdl-layout__header--scroll">
+				<div class="mdl-layout__header-row">
+					<span class="mdl-layout-title">Admin</span>
+					<div class="mdl-layout-spacer"></div>
+					<nav class="mdl-navigation mdl-layout--large-screen-only">
+						<a class="mdl-navigation__link" href="geo_etd_home.html"><i class="small material-icons">home</i></a>
+						<a class="mdl-navigation__link" href="geo_etd_thesis.html"><i class="small material-icons">info</i></a>
+						<a class="mdl-navigation__link" href="geo_etd_publisher.html"><i class="small material-icons">book</i></a>
+						<a class="mdl-navigation__link" href="geo_etd_admin.html"><i class="small material-icons">people</i></a>
+						<a class="mdl-navigation__link" href="geo_etd_search.html"><i class="small material-icons">search</i></a>
+					</nav>
+				</div>
+			</header>
+			<div class="mdl-layout__drawer">
+				<span class="mdl-layout-title" style="font-size: 60px;color: #0c1875;padding-top: 25px;padding-left: 45px"><b><i>ETD</b></i></span>
+				<nav class="mdl-navigation">						
+					<a class="mdl-navigation__link" href="geo_etd_home.html" id="nav"><i class="small material-icons" style="padding-right: 20px;color: #0c1875">home</i>Home</a>
+					<a class="mdl-navigation__link" href="geo_etd_thesis.html" id="nav"><i class="small material-icons" style="padding-right: 20px;color: #0c1875">info</i>ThesisResource</a>
+					<a class="mdl-navigation__link" href="geo_etd_publisher.html" id="nav"><i class="small material-icons" style="padding-right: 20px;color: #0c1875">book</i>Publisher</a>
+					<a class="mdl-navigation__link" href="geo_etd_admin.html" id="nav"><i class="small material-icons" style="padding-right: 20px;color: #0c1875">people</i>Admin</a>
+					<a class="mdl-navigation__link" href="geo_etd_search.html" id="nav"><i class="small material-icons" style="padding-right: 20px;color: #0c1875">search</i>Search</a>
+				</nav>
+			</div>
+			<main class="mdl-layout-content">
+				<div class="page-content">
+					<div class="mdl-grid demo-content mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+						<div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell-6-col-phone" style="padding-left: 5%">
+							<img class="article-image" src="image/etd.png">
+						</div>
+						<div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--8-col-tablet mdl-cell-12-col-phone">
+							<h3><b>Electronic Thesis and Dissertation</b></h3>
+							<h5><i>Source from Computer University (Mandalay)</i></h5>
+						</div>
+					</div>
+					
+						<h2 align="center" > Admin Login</h2>
+					    <div id="firebaseui-auth-container" ></div>
+					    <div id="loader">Loading...</div>
+					
+									 
+					
+
+				</div>
+			</main>
+			   <script>
+					    // Initialize the FirebaseUI Widget using Firebase.
+					    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+					    var uiConfig = {
+					  callbacks: {
+					    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+					      // User successfully signed in.
+					      // Return type determines whether we continue the redirect automatically
+					      // or whether we leave that to developer to handle.
+					      return true;
+					    },
+					    uiShown: function() {
+					      // The widget is rendered.
+					      // Hide the loader.
+					      document.getElementById('loader').style.display = 'none';
+					    }
+					  },
+					  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+					  signInFlow: 'popup',
+					  signInSuccessUrl: 'geo_etd_db_2008.html',
+					  signInOptions: [
+					    // Leave the lines as is for the providers you want to offer your users.
+					    //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+					    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+					    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+					    //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+					    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+					    firebase.auth.PhoneAuthProvider.PROVIDER_ID
+					  ],
+					  // Terms of service url.
+					  tosUrl: '',
+					  // Privacy policy url.
+					  privacyPolicyUrl: ''
+					};
+					    ui.start('#firebaseui-auth-container', uiConfig);
+					          
+					  </script>
+			<footer class="mdl-mega-footer">
+
+					<div class="mdi-grid">
+						<div class="mdl-layout-spacer"></div>
+					</div>
+						<div class="mdl-mega-footer__middle-section">
+							<div class="mdl-mega-footer__drop-down-section">
+								<input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+								<h1 class="mdl-mega-footer__heading">Details</h1>
+								<ul class="mdl-mega-footer__link-list">
+									<li><a href="geo-etd-home.html">Home</a></li>
+									<li><a href="geo-etd-thesis.html">ThesisResource</a></li>
+									<li><a href="geo-etd-publisher.html">Publisher</a></li>
+									<li><a href="geo-etd-admin.html">Admin</a></li>
+								</ul>
+							</div>
+						
+							
+							<div class="mdl-mega-footer__drop-down-section">
+								<input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+								<h1 class="mdl-mega-footer__heading">FAQ</h1>
+								<ul class="mdl-mega-footer__link-list">
+									<li><a href="http://ask.tiide.org">Questions</a></li>
+									<li><a href="http://ask.tiide.org">Answers</a></li>
+									<li><a href="circle.html">Contact us</a></li>
+								</ul>
+							</div>
+
+							<div class="mdl-mega-footer__drop-down-section">
+								<input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+								<h1 class="mdl-mega-footer__heading">Social</h1>
+								<ul class="mdl-mega-footer__link-list">
+									<li><a href="https://www.github.com/bravo-mdy-geo">GitHub</a></li>
+									<li><a href="https://www.facebook.com">Facebook</a></li>
+									<li><a href="https://www.gmail.com">Gmail</a></li>
+									<li><a href="https://www.twitter.com">Twitter</a></li>
+								</ul>
+							</div>
+
+						
+							<div class="mdl-mega-footer__drop-down-section">
+								<input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+								<h1 class="mdl-mega-footer__heading">Comment</h1>
+								<form>
+								<div class="mdl-textarea">
+									<textarea name="text" placeholder="Message Here" style="background-color: lightgray;"></textarea>
+								</div>
+								<div>
+								 <a class="button-link" href="footer.html" style="color: lightgray;">Submit</a>
+								</div>
+								</form>
+							</div>
+
+
+						</div>
+						<div class="mdl-mega-footer__bottom-section">
+							<div class="mdl-grid">
+								<div class="mdl-layout-spacer"></div>
+								<div class="mdl-grid mdl-cell mdl-cell--3-col">
+							<ul class="mdl-mega-footer__link-list">
+								<li><a href="#"></a>Director  by  U Ravi Chhabra</li>
+							</ul>
+							</div>
+							<div class="mdl-layout-spacer"></div>
+						</div>
+						</div>
+					</footer>
+		</div>		
+	</body>
+</html>

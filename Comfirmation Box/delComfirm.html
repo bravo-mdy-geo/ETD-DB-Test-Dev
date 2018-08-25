@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Delete Comfirm Box</title>
+
+	 	<script defer src="/__/firebase/5.3.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+	    <script defer src="/__/firebase/5.3.0/firebase-auth.js"></script>
+	    <script defer src="/__/firebase/5.3.0/firebase-database.js"></script>
+	    <script defer src="/__/firebase/5.3.0/firebase-messaging.js"></script>
+	    <script defer src="/__/firebase/5.3.0/firebase-storage.js"></script>
+	    <!-- initialize the SDK after all desired features are loaded -->
+	    <script defer src="/__/firebase/init.js"></script>
+	   
+
+	    <!-- for delete button confirmation box-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+		
+
+</head>
+<body>
+	<input type="text" placeholder="Enter Id" id="txt_id"><br>
+	<button id="delete" onclick="Delete()" > Delete</button><br>
+	<p id="demo"></p>
+	
+<!--<script type="text/javascript">
+function Delete(){
+
+		 var id = document.getElementById("txt_id").value;
+    if (confirm("Are U sure to delete!" + id)) {
+       var key = id;
+       var ans = firebase.database().ref().child('2010').child(key).remove();
+       txt = ans;
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+	
+</script> -->
+	
+	
+	<script type="text/javascript">
+
+		$('#delete').on('click' , function(){
+			$.confirm({
+		    title: 'Confirm!',
+		    content: 'Simple confirm!',
+		    buttons: {
+		        confirm: function () {
+		           // $.alert('Confirmed!');
+		           var key = $('#txt_id').val();
+
+					firebase.database().ref().child('2010').child(key).remove();
+					$.alert(key + " delete successfully!");		
+					
+		        },
+		        cancel: function () {
+		            $.alert('Canceled!');
+		        },
+		       
+		    }
+		});
+			});
+	
+	
+	
+</script> 
+</body>
+</html>

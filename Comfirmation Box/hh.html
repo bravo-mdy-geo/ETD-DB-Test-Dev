@@ -1,0 +1,83 @@
+<html>
+<head>
+	 	<script src="https://craftpip.github.io/jquery-confirm/css/jquery-confirm.css"></script>
+	    <script src="https://craftpip.github.io/jquery-confirm/js/jquery-confirm.js"></script>
+	    <script src="https://craftpip.github.io/jquery-confirm/demo/demo.css"></script>
+
+	    <!-- for delete button confirmation box-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+		<style>
+			.jconfirm {
+    			-webkit-perspective: 400px;
+    			perspective: 400px;
+    		}
+    		.jconfirm {
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			    z-index: 99999999;
+			    font-family: inherit;
+			    overflow: hidden;
+			}
+			* {
+			    -webkit-box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    box-sizing: border-box;
+			}
+			div {
+			    display: block;
+			}
+			.jconfirm.jconfirm-white .jconfirm-box, .jconfirm.jconfirm-light .jconfirm-box {
+			    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+			    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+			    border-radius: 5px;
+			}
+			.jconfirm .jconfirm-box.jconfirm-type-animated {
+			    -webkit-animation-duration: 2s;
+			    animation-duration: 2s;
+			    -webkit-animation-iteration-count: infinite;
+			    animation-iteration-count: infinite;
+			}
+			.jconfirm .jconfirm-box {
+			    opacity: 1;
+			    -webkit-transition-property: all;
+			    transition-property: all;
+			}
+			.jconfirm .jconfirm-box {
+			    background: white;
+			    border-radius: 4px;
+			    position: relative;
+			    outline: none;
+			    padding: 15px 15px 0;
+			    overflow: hidden;
+			    margin-left: auto;
+			    margin-right: auto;
+			}
+			* {
+			    -webkit-box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    box-sizing: border-box;
+			}
+			:after, :before {
+			    -webkit-box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    box-sizing: border-box;
+			}
+			:after, :before {
+			    -webkit-box-sizing: border-box;
+			    -moz-box-sizing: border-box;
+			    box-sizing: border-box;
+			}
+
+		</style>
+		
+</head>
+<body>
+<div class="jconfirm jconfirm-light jconfirm-open"><div class="jconfirm-bg" style="transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1);"></div><div class="jconfirm-scrollpane"><div class="jconfirm-row"><div class="jconfirm-cell"><div class="jconfirm-holder" style="padding-top: 40px; padding-bottom: 40px;"><div class="jc-bs3-container container"><div class="jc-bs3-row row justify-content-md-center justify-content-sm-center justify-content-xs-center justify-content-lg-center"><div class="jconfirm-box-container jconfirm-animated col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 jconfirm-no-transition" style="transform: translate(0px, 0px); transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1);"><div class="jconfirm-box jconfirm-hilight-shake jconfirm-type-default jconfirm-type-animated" role="dialog" aria-labelledby="jconfirm-box74268" tabindex="-1" style="transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1); transition-property: all, margin;"><div class="jconfirm-closeIcon" style="display: none;">×</div><div class="jconfirm-title-c"><span class="jconfirm-icon-c"></span><span class="jconfirm-title">Confirm!</span></div><div class="jconfirm-content-pane no-scroll" style="transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1); height: 20px; max-height: 338px;"><div class="jconfirm-content" id="jconfirm-box74268"><div>Simple confirm!</div></div></div><div class="jconfirm-buttons"><button type="button" class="btn btn-default">confirm</button><button type="button" class="btn btn-default">cancel</button><button type="button" class="btn btn-blue">Something else</button></div><div class="jconfirm-clear"></div></div></div></div></div></div></div></div></div></div>
+</body>
+</html>
